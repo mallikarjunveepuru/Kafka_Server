@@ -19,6 +19,7 @@ curl -O https://storage.googleapis.com/gggopaddle1/kafka_2.10-0.9.0.1.zip
 sleep 15
 unzip kafka_2.10-0.9.0.1.zip
 ip="$(curl icanhazip.com)"
+sed -i "s/localhost/${ip}/g" kafka_2.10-0.9.0.1/config/producer.properties
 sed -i "s/localhost/${ip}/g" kafka_2.10-0.9.0.1/config/server.properties
 sed -i "s/127.0.0.1/${ip}/g" kafka_2.10-0.9.0.1/config/consumer.properties
 #kafka_2.10-0.9.0.1/bin/zookeeper-server-start.sh kafka_2.10-0.9.0.1/config/zookeeper.properties&
