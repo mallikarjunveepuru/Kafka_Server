@@ -17,6 +17,7 @@ rm -rf kafka_2.10-0.9.0.1*
 apt-get install curl -y
 curl -O https://storage.googleapis.com/gggopaddle1/kafka_2.10-0.9.0.1.zip
 sleep 15
+apt-get install unzip -y
 unzip kafka_2.10-0.9.0.1.zip
 ip="$(curl icanhazip.com)"
 sed -i "s/localhost/${ip}/g" ~/kafka_2.10-0.9.0.1/config/producer.properties
