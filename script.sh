@@ -37,7 +37,8 @@ sed -i "s/9092/30001/g" ~/kafka_2.10-0.9.0.1/config/producer.properties
 #kafka_2.10-0.9.0.1/bin/kafka-console-producer.sh --topic test --broker-list localhost:9092
 curl -O http://d3kbcqa49mib13.cloudfront.net/spark-1.6.0-bin-hadoop2.6.tgz
 tar xvf ~/spark-1.6.0-bin-hadoop2.6.tgz
-./spark-1.6.0-bin-hadoop2.6/sbin/start-master.sh -h 0.0.0.0
+~/spark-1.6.0-bin-hadoop2.6/sbin/start-master.sh -h 0.0.0.0
+sleep 15
 apt-get install git -y
 git clone https://github.com/mallikarjunveepuru/sample-KafkaSparkCassandra.git
 cd ~/sample-KafkaSparkCassandra
