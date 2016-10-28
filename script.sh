@@ -46,5 +46,5 @@ cd ~/sample-KafkaSparkCassandra
 sbt assembly
 ~/spark-1.6.0-bin-hadoop2.6/sbin/start-master.sh -h ${ip} -p 7077
 export SPARK_LOCAL_IP=${ip}
-~/spark-1.6.0-bin-hadoop2.6/sbin/start-slave.sh spark://${ip}:7077
+~/spark-1.6.0-bin-hadoop2.6/sbin/start-slave.sh spark://${ip}:7077 -i ${ip} -m 256M
 ~/spark-1.6.0-bin-hadoop2.6/bin/spark-submit --properties-file cassandra-count.conf --class KafkaSparkCassandra target/scala-2.10/cassandra-kafka-streaming-assembly-1.0.jar
