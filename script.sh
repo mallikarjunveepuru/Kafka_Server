@@ -42,6 +42,5 @@ apt-get install git -y
 git clone https://github.com/mallikarjunveepuru/sample-KafkaSparkCassandra.git
 cd ~/sample-KafkaSparkCassandra
 sbt assembly
-cd ..
 ~/spark-1.6.0-bin-hadoop2.6/sbin/start-slave.sh spark://0.0.0.0:7007
 ~/spark-1.6.0-bin-hadoop2.6/bin/spark-submit --properties-file cassandra-count.conf --class KafkaSparkCassandra target/scala-2.10/cassandra-kafka-streaming-assembly-1.0.jar
