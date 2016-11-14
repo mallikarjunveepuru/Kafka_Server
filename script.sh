@@ -31,6 +31,7 @@ sudo iptables -t nat -A POSTROUTING ! -d 10.0.0.0/8 -o ens4v1 -j MASQUERADE
 sed -i "s/#advertised.host.name=<hostname routable by clients>/advertised.host.name=${ip}/g" ~/kafka_2.10-0.9.0.1/config/server.properties
 sed -i "s/#advertised.port=<port accessible by clients>/advertised.port=9092/g" ~/kafka_2.10-0.9.0.1/config/server.properties
 #kafka_2.10-0.9.0.1/bin/zookeeper-server-start.sh kafka_2.10-0.9.0.1/config/zookeeper.properties&
+sleep 50
 ~/kafka_2.10-0.9.0.1/bin/kafka-server-start.sh kafka_2.10-0.9.0.1/config/server.properties&
 #kafka_2.10-0.9.0.1/bin/kafka-console-producer.sh --topic test --broker-list localhost:9092
 
