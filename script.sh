@@ -19,10 +19,11 @@ curl -O https://storage.googleapis.com/gggopaddle1/kafka_2.10-0.9.0.1.zip
 sleep 15
 apt-get install unzip -y
 unzip kafka_2.10-0.9.0.1.zip
-ip="$(curl icanhazip.com)"
+#ip="$(curl icanhazip.com)"
+ip=localhost
 sleep 10
-sed -i "s/localhost/${ip}/g" ~/kafka_2.10-0.9.0.1/config/producer.properties
-sed -i "s/localhost/${ip}/g" ~/kafka_2.10-0.9.0.1/config/server.properties
+#sed -i "s/localhost/${ip}/g" ~/kafka_2.10-0.9.0.1/config/producer.properties
+#sed -i "s/localhost/${ip}/g" ~/kafka_2.10-0.9.0.1/config/server.properties
 sed -i "s/127.0.0.1/${ip}/g" ~/kafka_2.10-0.9.0.1/config/consumer.properties
 sed -i "s/#host.name=${ip}/host.name=${ip}/g" ~/kafka_2.10-0.9.0.1/config/server.properties
 sudo iptables -t nat -A POSTROUTING ! -d 10.0.0.0/8 -o ens4v1 -j MASQUERADE
@@ -40,6 +41,6 @@ cd ~/sample-KafkaSparkCassandra
 sbt assembly
 ~/spark-1.6.0-bin-hadoop2.6/sbin/start-master.sh -h 0.0.0.0 -p 7077
 export SPARK_LOCAL_IP=0.0.0.0
-ip="$(curl icanhazip.com)"
-~/spark-1.6.0-bin-hadoop2.6/sbin/start-slave.sh spark://${ip}:7077 -m 256M
+#ip="$(curl icanhazip.com)"
+~/spark-1.6.0-bin-hadoop2.6/sbin/start-slave.sh spark://localhost:7077 -m 128M
 ~/spark-1.6.0-bin-hadoop2.6/bin/spark-submit --properties-file cassandra-count.conf --class KafkaSparkCassandra target/scala-2.10/cassandra-kafka-streaming-assembly-1.0.jar
