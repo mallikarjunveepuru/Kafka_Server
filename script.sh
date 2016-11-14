@@ -20,6 +20,7 @@ sleep 15
 apt-get install unzip -y
 unzip kafka_2.10-0.9.0.1.zip
 ip="$(curl icanhazip.com)"
+sleep 10
 sed -i "s/localhost/${ip}/g" ~/kafka_2.10-0.9.0.1/config/producer.properties
 sed -i "s/localhost/${ip}/g" ~/kafka_2.10-0.9.0.1/config/server.properties
 sed -i "s/127.0.0.1/${ip}/g" ~/kafka_2.10-0.9.0.1/config/consumer.properties
@@ -31,6 +32,7 @@ sed -i "s/#advertised.port=<port accessible by clients>/advertised.port=9092/g" 
 ~/kafka_2.10-0.9.0.1/bin/kafka-server-start.sh kafka_2.10-0.9.0.1/config/server.properties&
 #kafka_2.10-0.9.0.1/bin/kafka-console-producer.sh --topic test --broker-list localhost:9092
 curl -O http://d3kbcqa49mib13.cloudfront.net/spark-1.6.0-bin-hadoop2.6.tgz
+sleep 30
 tar xvf spark-1.6.0-bin-hadoop2.6.tgz
 sleep 10
 git clone https://github.com/mallikarjunveepuru/sample-KafkaSparkCassandra.git
