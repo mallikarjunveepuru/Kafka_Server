@@ -26,6 +26,7 @@ sleep 10
 #sed -i "s/localhost/${ip}/g" ~/kafka_2.10-0.9.0.1/config/server.properties
 sed -i "s/127.0.0.1/${ip}/g" ~/kafka_2.10-0.9.0.1/config/consumer.properties
 sed -i "s/#host.name=${ip}/host.name=${ip}/g" ~/kafka_2.10-0.9.0.1/config/server.properties
+sudo apt-get install iptables -y
 sudo iptables -t nat -A POSTROUTING ! -d 10.0.0.0/8 -o ens4v1 -j MASQUERADE
 sed -i "s/#advertised.host.name=<hostname routable by clients>/advertised.host.name=${ip}/g" ~/kafka_2.10-0.9.0.1/config/server.properties
 sed -i "s/#advertised.port=<port accessible by clients>/advertised.port=9092/g" ~/kafka_2.10-0.9.0.1/config/server.properties
