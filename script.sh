@@ -34,7 +34,6 @@ sed -i "s/#advertised.port=<port accessible by clients>/advertised.port=9092/g" 
 sleep 50
 ~/kafka_2.10-0.9.0.1/bin/kafka-server-start.sh kafka_2.10-0.9.0.1/config/server.properties&
 #kafka_2.10-0.9.0.1/bin/kafka-console-producer.sh --topic test --broker-list localhost:9092
-
 curl -O https://storage.googleapis.com/gggopaddle1/spark-1.6.0-bin-hadoop2.6.zip
 unzip spark-1.6.0-bin-hadoop2.6.zip
 #curl -O http://d3kbcqa49mib13.cloudfront.net/spark-1.6.0-bin-hadoop2.6.tgz
