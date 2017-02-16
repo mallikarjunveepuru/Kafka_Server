@@ -1,7 +1,3 @@
-#!/bin/bash
-cd ~
-echo "started"
-apt-get update -y
 apt-get remove scala-library scala -y
 apt-get install wget -y
 rm -rf scala-2.10.5.deb
